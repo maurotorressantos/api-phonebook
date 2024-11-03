@@ -1,0 +1,12 @@
+GET http://localhost:3001/api/phones
+
+###
+POST http://localhost:3001/api/phones/ HTTP/1.1
+content-type: application/json
+
+{
+  "name": "Mauricio Torres",
+  "phone": "39-23-6445-22",
+  "content":"Principal Manager",
+  "important": false
+}
