@@ -6,6 +6,7 @@ const app = express();
 /**
  * Initia Config
  */
+app.use(express.static("dist"));
 app.use(cors());
 app.use(express.json());
 app.use("/", routes);
