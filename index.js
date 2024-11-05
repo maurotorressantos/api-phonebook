@@ -3,6 +3,8 @@ const routes = require("./routes/routes");
 const cors = require("cors");
 const app = express();
 
+// this has to be the last loaded middleware, also all the routes should be registered before this!
+
 /**
  * Initia Config
  */
