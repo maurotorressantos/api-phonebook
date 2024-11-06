@@ -1,24 +1,24 @@
-const express = require("express");
-const morgan = require("morgan");
+const express = require('express');
+const morgan = require('morgan');
 const router = express.Router();
 const {
   requestLogger,
   errorHandler,
   unknownEndpoint,
-} = require("../middlewares/middlewares");
-const appController = require("../controllers/appController.js");
+} = require('../middlewares/middlewares');
+const appController = require('../controllers/appController.js');
 
 /**
  * Routes Config
  */
-const API_BODY = "api";
+const API_BODY = 'api';
 
 /**
  * Api Doc
  */
 router.use(morgan(requestLogger));
-router.get("/", appController.home);
-router.get("/info", appController.info);
+router.get('/', appController.home);
+router.get('/info', appController.info);
 
 /**
  * Phones Resouce API Routes

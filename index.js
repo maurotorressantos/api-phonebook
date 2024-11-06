@@ -1,17 +1,15 @@
-const express = require("express");
-const routes = require("./routes/routes");
-const cors = require("cors");
+const express = require('express');
+const routes = require('./routes/routes');
+const cors = require('cors');
 const app = express();
-
-// this has to be the last loaded middleware, also all the routes should be registered before this!
 
 /**
  * Initia Config
  */
-app.use(express.static("dist"));
+app.use(express.static('dist'));
 app.use(cors());
 app.use(express.json());
-app.use("/", routes);
+app.use('/', routes);
 /**
  * Constants
  */

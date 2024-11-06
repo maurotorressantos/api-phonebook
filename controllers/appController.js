@@ -1,10 +1,10 @@
-const Phone = require("../models/phone");
+const Phone = require('../models/phone');
 
 /**
  * Info
  */
 exports.home = (req, res) => {
-  res.send("<h1>Hello World!</h1>");
+  res.send('<h1>Hello World!</h1>');
 };
 
 exports.info = (req, res) => {
@@ -73,7 +73,7 @@ exports.update = (request, response, next) => {
   Phone.findByIdAndUpdate(request.params.id, phone, {
     new: true,
     runValidators: false, // Change by True when frontend add field to update content data.s
-    context: "query",
+    context: 'query',
   })
     .then((updatedPhone) => {
       response.json(updatedPhone);
