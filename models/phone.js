@@ -11,9 +11,26 @@ mongoose
   .catch((error) => console.log("Error connecting to MongoDB:", error.message));
 
 const phoneSchema = new mongoose.Schema({
-  name: String,
-  phone: String,
-  content: String,
+  name: {
+    type: String,
+    minLength: 3,
+    required: true,
+  },
+  phone: {
+    type: String,
+    validate: {
+      validator: function (v) {
+        return /\d{3}-\d{8}/.test(v);
+      },
+      message: (props) => `${props.value} is not a valid phone number!`,
+    },
+    required: [true, "User phone number required"],
+  },
+  content: {
+    type: String,
+    minLength: 5,
+    required: true,
+  },
   important: Boolean,
 });
 

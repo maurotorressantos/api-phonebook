@@ -26,19 +26,13 @@ exports.all = (req, res, next) => {
 };
 
 exports.new = (request, response, next) => {
-  const body = request.body;
-
-  /*if (!body.content) {
-    return response.status(400).json({
-      error: "content missing",
-    });
-  }*/
+  const { name, phone, content, important } = request.body;
 
   const newPhone = new Phone({
-    name: body.name,
-    phone: body.phone,
-    important: Boolean(body.important) || false,
-    content: "Example content body",
+    name: name,
+    phone: phone,
+    important: Boolean(important) || false,
+    content: content,
   });
 
   newPhone
@@ -69,13 +63,18 @@ exports.delete = (request, response, next) => {
 };
 
 exports.update = (request, response, next) => {
-  const body = request.body;
+  const { content, important } = request.body;
 
   const phone = {
-    important: body.important,
+    content,
+    important,
   };
 
-  Phone.findByIdAndUpdate(request.params.id, phone, { new: true })
+  Phone.findByIdAndUpdate(request.params.id, phone, {
+    new: true,
+    runValidators: false, // Change by True when frontend add field to update content data.s
+    context: "query",
+  })
     .then((updatedPhone) => {
       response.json(updatedPhone);
     })
