@@ -1,29 +1,17 @@
 const router = require('express').Router()
-const appController = require('../controllers/phoneController.js')
-
-/**
- * Routes Config
- */
-const PHONE_RESOURCE_URL = '/api/phones'
-
-/**
- * Api Doc
- */
-
-router.get('/', appController.home)
-router.get('/info', appController.info)
+const phoneController = require('../controllers/phoneController.js')
 
 /**
  * Phones Resouce API Routes
  */
 
 // Parent
-router.get(PHONE_RESOURCE_URL, appController.all)
-router.post(PHONE_RESOURCE_URL, appController.new)
+router.get('/phones', phoneController.all)
+router.post('/phones', phoneController.new)
 
 // Child
-router.get(`${PHONE_RESOURCE_URL}/:id`, appController.child)
-router.put(`${PHONE_RESOURCE_URL}/:id`, appController.update)
-router.delete(`${PHONE_RESOURCE_URL}/:id`, appController.delete)
+router.get('/phones/:id', phoneController.child)
+router.put('/phones/:id', phoneController.update)
+router.delete('/phones/:id', phoneController.delete)
 
 module.exports = router

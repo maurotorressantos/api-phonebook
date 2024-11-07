@@ -13,7 +13,6 @@ exports.info = (request, response) => {
 
   response.send(`<p>Phonebook </p><p>${today}</p>`)
 }
-
 /**
  * Phone Resources
  */

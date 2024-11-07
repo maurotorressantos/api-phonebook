@@ -1,0 +1,26 @@
+GET http://localhost:3001/api/phones
+
+###
+POST http://localhost:3001/api/phones/ HTTP/1.1
+content-type: application/json
+
+{
+  "name": "Mauricio Torres",
+  "phone": "39-23-6445-22",
+  "content":"Principal Manager",
+  "important": false
+}
+
+###
+GET http://localhost:3001/api/blogs
+
+###
+POST http://localhost:3001/api/blogs/ HTTP/1.1
+content-type: application/json
+
+{
+  "title" : "Los caminos de la vida, no son como yo pensaba",
+  "author": "Mauricio Torres",
+  "url": "https://google.com",
+  "likes": 5
+}

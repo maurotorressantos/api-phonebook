@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const { formatResponse } = require('../utils/middlewares')
 
 const phoneSchema = new mongoose.Schema({
   name: {
@@ -25,11 +26,7 @@ const phoneSchema = new mongoose.Schema({
 })
 
 phoneSchema.set('toJSON', {
-  transform: (document, returnedObject) => {
-    returnedObject.id = returnedObject._id.toString()
-    delete returnedObject._id
-    delete returnedObject.__v
-  }
+  transform: formatResponse
 })
 
 module.exports = mongoose.model('phones', phoneSchema)

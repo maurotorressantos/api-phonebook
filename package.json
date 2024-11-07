@@ -6,8 +6,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
     "dev": "dotenv -- nodemon index.js",
-    "build:ui": "rm -rf dist && cd ../app && npm run build && cp -r dist ../api",
-    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push",
     "lint": "eslint ."
   },
   "author": "Mauricio Torres Santos",
@@ -24,6 +22,7 @@
     "@stylistic/eslint-plugin-js": "^2.10.1",
     "eslint": "^9.14.0",
     "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
     "globals": "^15.12.0",
     "nodemon": "^3.1.7",
     "prettier": "^3.3.3"

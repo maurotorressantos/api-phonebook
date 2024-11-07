@@ -19,7 +19,7 @@ const middlewares = require('./utils/middlewares.js')
  * Routes
  */
 
-const phoneRoutes = require('./routes/phoneRoutes.js')
+const routes = require('./routes/indexRoutes.js')
 
 /**
  * Database connection
@@ -39,10 +39,9 @@ mongoose
  */
 
 app.use(cors())
-app.use(express.static('dist'))
 app.use(express.json())
 app.use(middlewares.requestLogger)
-app.use('/', phoneRoutes)
+app.use('/api', routes)
 app.use(middlewares.unknownEndpoint)
 app.use(middlewares.errorHandler)
 
