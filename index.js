@@ -1,22 +1,7 @@
-const express = require('express');
-const routes = require('./routes/routes');
-const cors = require('cors');
-const app = express();
+const app = require('./app')
+const config = require('./utils/config')
+const logger = require('./utils/logger')
 
-/**
- * Initia Config
- */
-app.use(express.static('dist'));
-app.use(cors());
-app.use(express.json());
-app.use('/', routes);
-/**
- * Constants
- */
-const PORT = process.env.PORT || 3001;
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
-
-module.exports = app;
+app.listen(config.PORT, () => {
+  logger.info(`Server running on port ${config.PORT}`)
+})
