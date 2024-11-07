@@ -3,24 +3,24 @@ const Phone = require('../models/phoneModel')
 /**
  * Info
  */
-exports.home = (req, res) => {
-  res.send('<h1>Hello World!</h1>')
+exports.home = (request, response) => {
+  response.send('<h1>Hello World!</h1>')
 }
 
-exports.info = (req, res) => {
+exports.info = (request, response) => {
   const date = Date.now()
   const today = new Date(date).toUTCString()
 
-  res.send(`<p>Phonebook </p><p>${today}</p>`)
+  response.send(`<p>Phonebook </p><p>${today}</p>`)
 }
 
 /**
  * Phone Resources
  */
-exports.all = (req, res, next) => {
+exports.all = (request, response, next) => {
   Phone.find({})
     .then((result) => {
-      res.json(result)
+      response.json(result)
     })
     .catch((error) => next(error))
 }
@@ -55,22 +55,21 @@ exports.child = (request, response, next) => {
 
 exports.delete = (request, response, next) => {
   Phone.findByIdAndDelete(request.params.id)
-    .then((phone) => {
+    .then(() => {
       response.status(204).end()
     })
     .catch((error) => next(error))
 }
 
 exports.update = (request, response, next) => {
-  const { content, important, _id } = request.body
+  const { content, important, id } = request.body
 
   const phone = {
     content,
     important
   }
 
-  console.log(request.body)
-  Phone.findByIdAndUpdate(_id, phone, {
+  Phone.findByIdAndUpdate(id, phone, {
     new: true,
     runValidators: false, // Change by True when frontend add field to update content data.s
     context: 'query'

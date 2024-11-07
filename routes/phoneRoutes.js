@@ -4,7 +4,7 @@ const appController = require('../controllers/phoneController.js')
 /**
  * Routes Config
  */
-const PHONE_RESOURCE_URL = `/api/phones`
+const PHONE_RESOURCE_URL = '/api/phones'
 
 /**
  * Api Doc

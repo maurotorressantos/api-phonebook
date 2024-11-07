@@ -22,3 +22,4 @@ dist-ssr
 *.sln
 *.sw?
 requests.rest
+eslint.config.mjs

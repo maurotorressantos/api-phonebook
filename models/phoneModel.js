@@ -10,7 +10,7 @@ const phoneSchema = new mongoose.Schema({
     type: String,
     validate: {
       validator: function (v) {
-        return /\d{3}-\d{8}/.test(v)
+        return /\d{1,3}-\d{1,8}$/.test(v)
       },
       message: (props) => `${props.value} is not a valid phone number!`
     },
@@ -25,7 +25,7 @@ const phoneSchema = new mongoose.Schema({
 })
 
 phoneSchema.set('toJSON', {
-  transform: (returnedObject) => {
+  transform: (document, returnedObject) => {
     returnedObject.id = returnedObject._id.toString()
     delete returnedObject._id
     delete returnedObject.__v
